@@ -67,6 +67,10 @@ img {
   font-weight: 900;
 }
 
+.blog-body {
+  color: var(--Gray-500);
+}
+
 /* ===============
     LAYOUT
 =============== */
@@ -105,10 +109,6 @@ img {
 
 .blog-publish-date {
   order: -1;
-}
-
-.blog-body {
-  color: var(--Gray-500);
 }
 
 .author {

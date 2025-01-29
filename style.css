@@ -1,3 +1,7 @@
+/* ===============
+    DEFAULTS
+=============== */
+
 :root {
   --Yellow: hsl(47, 88%, 63%);
   --White: hsl(0, 0%, 100%);
@@ -8,42 +12,113 @@
 
 * {
   box-sizing: border-box;
-  margin-top: 0;
+  /* Im setting everything to 0 margin because whereever I need spacing I can just add gap, since all of the containers
+     will have display: flex. */
+  margin: 0;
+}
+
+/* This is needed to allow the card to be centered on the screen. Setting body to 100% height wouldnt be enough
+   Becuase when you use a percentage youre telling the element to grow to a certain percentage of its parent. 
+   html tag is body's parent.  Could have also set height on the :root pseudo class above, and height on the body
+   selector below. Itd be the same thing.*/
+html,
+body {
+  height: 100%;
 }
 
 body {
-  margin: 0;
   font-family: var(--font);
   font-size: 1rem;
   font-weight: 500;
   color: var(--Gray-950);
   line-height: 1.5;
+  background-color: var(--Yellow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5em;
 }
 
 img {
   max-width: 100%;
 }
 
+/* ===============
+    TYPOGROPHY
+=============== */
+
 .text-preset-1 {
   font-size: 1.5rem;
   font-weight: 900;
-  line-height: 1.5;
 }
 
-.text-preset-2 {
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.5;
-}
+/* Creating text-preset-2 would be redundant because those exact styles are set on the body; so all text elements are
+   inheriting those styles from the body already. Same reason why there's no line-height set for any of the presets
+   and no font-weight for preset-3, those styles are alredy inherited from the body. 
+   Keep things DRY! (Don't Repeat Yourself)
+*/
 
 .text-preset-3 {
   font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.5;
 }
 
 .text-preset-3-bold {
   font-size: 0.875rem;
   font-weight: 900;
-  line-height: 1.5;
+}
+
+/* ===============
+    LAYOUT
+=============== */
+
+.card {
+  min-width: 327px;
+  max-width: 384px;
+  background-color: var(--White);
+  border-radius: 1.5em;
+  border: 1px solid var(--Gray-950);
+  padding: 1.5em;
+  box-shadow: 0.5em 0.5em 0 0 black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5em;
+}
+
+.blog-image {
+  border-radius: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75em;
+}
+
+.tag {
+  order: -2;
+  border-radius: 4px;
+  background-color: var(--Yellow);
+  padding: 0.25em 0.75em;
+}
+
+.blog-publish-date {
+  order: -1;
+}
+
+.blog-body {
+  color: var(--Gray-500);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.author-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
 }
